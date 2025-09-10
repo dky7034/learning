@@ -69,3 +69,5 @@ git commit -m "커밋 메시지"
 ```bash
 git status
 ```
+
+# 수정 1
