@@ -1,0 +1,40 @@
+/* 클래스 선택: .클래스명 */
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.blue {
+  color: blue;
+}
+.font-100 {
+  font-size: 100px;
+}
+.font-50 {
+  font-size: 50px;
+}
+
+/* 아이디 선택: #아이디명 */
+#bold {
+  font-weight: 900;
+}
+
+/* 속성 선택: [속성] → 대괄호 내부에 작성 */
+a[href] {
+  font-style: italic;
+  text-decoration: none;
+}
+a[href="https://www.naver.com"]
+{
+  font-style: oblique;
+  color: deeppink;
+}
+
+/* div > p {
+  color: aqua;
+} */
+
+#parent > .child {
+  color: aqua;
+}

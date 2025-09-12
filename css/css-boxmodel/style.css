@@ -1,0 +1,50 @@
+.padding-box {
+  /* padding: 0.75rem; */
+
+  /* 각 방향 개별 패딩 값 */
+  /* padding-left: 0.75rem;
+  padding-right: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 0rem; */
+
+  /* 위, 오른쪽, 아래, 왼쪽 순서로 적용 */
+  padding: 0.75rem 1rem 2rem 0rem;
+}
+
+.border-box {
+  /* 완만한 정도 */
+  border-radius: 2rem;
+  border-color: red;
+  border-width: 10px;
+  border-style: dashed;
+
+  /* 너비, 색, 종류 */
+  border: 10px dashed yellow;
+}
+
+span {
+  margin: 20px;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: lightpink;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 2rem;
+  padding: 20px;
+}
+.content-box {
+  /* 너비와 높이의 계산을 */
+  /* 오로지 콘텐츠로만 계산한다 */
+  box-sizing: content-box;
+}
+
+.border-box {
+  /* 너비와 높이의 계산을 */
+  /* 콘텐츠 + 패딩 + 테두리로 계산한다 */
+  box-sizing: border-box;
+}
+
+
