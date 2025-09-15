@@ -3,6 +3,9 @@
   background-color: mediumpurple;
   height: 500px;
   width: 100vw;
+  /* gap: 플렉스 컨테이너에 설정 */
+  /* gap: 플렉스 아이템간 간격을 조절 */
+  gap: 10px;
 }
 
 /* 플렉스 아이템들의 배치 방향 */
@@ -72,7 +75,7 @@
   background-color: blanchedalmond;
   width: 100px;
   height: 200px;
-  margin: 50px;
+  /* margin: 50px; */
   /* 플렉스 아이템은 별도의 display를 설정하지 않아도 됨 */
   /* 왜냐하면 부모가 display: flex 라면 */
   /* 자동으로 플렉스 아이템이 되기 때문 */
@@ -80,7 +83,16 @@
 
 .big-box {
   background-color: aquamarine;
-  width: 500px;
-  height: 100px;
-  margin: 20px;
+  width: 200px;
+  height: 200px;
+  /* margin: 20px; */
+}
+
+/* 각 개별 아이템의 교차 축 배치(정렬) 방식 */
+.align-self-center {
+  align-self: center;
+}
+
+.align-self-end {
+  align-self: flex-end;
 }
