@@ -1,0 +1,18 @@
+.header {
+  height: 200px;
+  background-color: lightblue;
+}
+
+/* sticky = relative + fixed */
+.sticky {
+  height: 100px;
+  width: 100%;
+  background-color: lightgreen;
+  position: sticky;
+  top: 0px;
+}
+
+.content {
+  height: 2000px;
+  background-color: lightgray;
+}
