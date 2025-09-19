@@ -32,3 +32,10 @@ console.log(array3);
 let pop = array3.pop();
 console.log(array3);
 console.log(pop);
+
+// for...of 반복문
+// 인덱스(위치번호) 활용 X
+// 배열에서 직접적으로 원소를 꺼내옴
+for (const element of array3) {
+  console.log(element);
+}
