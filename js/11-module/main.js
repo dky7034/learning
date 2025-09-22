@@ -9,3 +9,15 @@ console.log(add(1, 2));
 console.log(sub(1, 2));
 console.log(multiply(1, 2));
 console.log(devide(1, 2));
+
+console.log("=================================");
+
+// 하나만 불러오기
+// 내가 불러온 함수의 이름을 결정
+import cal from "./calculator.js";
+
+console.log(cal.add(1, 2));
+
+console.log(cal.sub(1, 2));
+
+console.log(cal.multi(1, 2));
