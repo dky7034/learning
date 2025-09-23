@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/dky7034/learning/issues"
   },
-  "homepage": "https://github.com/dky7034/learning#readme"
+  "homepage": "https://github.com/dky7034/learning#readme",
+  "dependencies": {
+    "axios": "^1.12.2"
+  }
 }
