@@ -8,8 +8,8 @@
 
 이 문서를 더 깊이 이해하기 위해 다음 개념에 대한 사전 지식이 있으면 좋습니다.
 
--   JavaScript 함수 및 콜백 함수
--   JavaScript 비동기 처리와 이벤트 루프
+- JavaScript 함수 및 콜백 함수
+- JavaScript 비동기 처리와 이벤트 루프
 
 ---
 
@@ -23,9 +23,9 @@
 
 Promise는 항상 다음 세 가지 상태 중 하나를 가집니다.
 
--   **`Pending` (대기)**: 비동기 작업이 아직 시작되지 않았거나, 진행 중인 초기 상태입니다.
--   **`Fulfilled` (이행)**: 비동기 작업이 성공적으로 완료된 상태입니다. 이때 결과 값을 함께 반환합니다.
--   **`Rejected` (거절)**: 비동기 작업이 실패한 상태입니다. 이때 실패 원인(에러)을 함께 반환합니다.
+- **`Pending` (대기)**: 비동기 작업이 아직 시작되지 않았거나, 진행 중인 초기 상태입니다.
+- **`Fulfilled` (이행)**: 비동기 작업이 성공적으로 완료된 상태입니다. 이때 결과 값을 함께 반환합니다.
+- **`Rejected` (거절)**: 비동기 작업이 실패한 상태입니다. 이때 실패 원인(에러)을 함께 반환합니다.
 
 **특징**: 한 번 `Fulfilled` 또는 `Rejected` 상태가 된 Promise는 다른 상태로 절대 변하지 않습니다. (불변성)
 
@@ -33,8 +33,8 @@ Promise는 항상 다음 세 가지 상태 중 하나를 가집니다.
 
 `new Promise()` 생성자 함수를 사용하여 Promise 객체를 만듭니다. 이 생성자는 비동기 작업을 수행할 콜백 함수를 인자로 받으며, 이 콜백 함수는 `resolve`와 `reject`라는 두 개의 함수를 인자로 받습니다.
 
--   `resolve(value)`: 비동기 작업이 **성공**했을 때 호출하며, Promise를 `Fulfilled` 상태로 만들고 결과 `value`를 전달합니다.
--   `reject(error)`: 비동기 작업이 **실패**했을 때 호출하며, Promise를 `Rejected` 상태로 만들고 `error` 객체를 전달합니다.
+- `resolve(value)`: 비동기 작업이 **성공**했을 때 호출하며, Promise를 `Fulfilled` 상태로 만들고 결과 `value`를 전달합니다.
+- `reject(error)`: 비동기 작업이 **실패**했을 때 호출하며, Promise를 `Rejected` 상태로 만들고 `error` 객체를 전달합니다.
 
 ```javascript
 const myPromise = new Promise((resolve, reject) => {
@@ -57,9 +57,9 @@ const myPromise = new Promise((resolve, reject) => {
 
 생성된 Promise는 후속 처리 메서드를 통해 결과를 다룰 수 있습니다.
 
--   `.then(onFulfilled)`: Promise가 `Fulfilled` 상태가 되면 실행됩니다. `resolve`가 전달한 결과 값을 인자로 받습니다.
--   `.catch(onRejected)`: Promise가 `Rejected` 상태가 되면 실행됩니다. `reject`가 전달한 에러 객체를 인자로 받습니다.
--   `.finally(onFinally)`: Promise의 성공/실패 여부와 관계없이 항상 마지막에 한 번 실행됩니다.
+- `.then(onFulfilled)`: Promise가 `Fulfilled` 상태가 되면 실행됩니다. `resolve`가 전달한 결과 값을 인자로 받습니다.
+- `.catch(onRejected)`: Promise가 `Rejected` 상태가 되면 실행됩니다. `reject`가 전달한 에러 객체를 인자로 받습니다.
+- `.finally(onFinally)`: Promise의 성공/실패 여부와 관계없이 항상 마지막에 한 번 실행됩니다.
 
 ```javascript
 myPromise
@@ -125,16 +125,23 @@ readFile("document.txt", (file) => {
 
 ```javascript
 // 각 함수는 Promise를 반환한다고 가정
-function readFile(filename) { /* ... */ }
-function processFile(file) { /* ... */ }
-function saveFile(processedFile) { /* ... */ }
+function readFile(filename) {
+  /* ... */
+}
+function processFile(file) {
+  /* ... */
+}
+function saveFile(processedFile) {
+  /* ... */
+}
 
 readFile("document.txt")
-  .then(file => processFile(file))
-  .then(processedFile => saveFile(processedFile))
-  .then(savedFile => console.log("모든 작업 완료"))
-  .catch(error => console.error("작업 중 에러 발생:", error));
+  .then((file) => processFile(file))
+  .then((processedFile) => saveFile(processedFile))
+  .then((savedFile) => console.log("모든 작업 완료"))
+  .catch((error) => console.error("작업 중 에러 발생:", error));
 ```
+
 코드가 순차적으로 읽히고, 에러 처리도 `.catch` 하나로 통합되어 훨씬 깔끔해졌습니다.
 
 ---
@@ -143,8 +150,8 @@ readFile("document.txt")
 
 `async/await`는 ES2017에 도입된, Promise를 동기 코드처럼 보이게 만드는 **문법적 설탕(Syntactic Sugar)** 입니다.
 
--   `async`: 함수 선언부 앞에 붙이며, 해당 함수가 항상 Promise를 반환한다는 것을 명시합니다.
--   `await`: `async` 함수 내부에서만 사용할 수 있으며, Promise가 `Fulfilled` 상태가 될 때까지 기다렸다가 결과 값을 반환합니다. 만약 Promise가 `Rejected`되면 에러를 발생시킵니다.
+- `async`: 함수 선언부 앞에 붙이며, 해당 함수가 항상 Promise를 반환한다는 것을 명시합니다.
+- `await`: `async` 함수 내부에서만 사용할 수 있으며, Promise가 `Fulfilled` 상태가 될 때까지 기다렸다가 결과 값을 반환합니다. 만약 Promise가 `Rejected`되면 에러를 발생시킵니다.
 
 ### 4.1. 기본 사용법 (try...catch)
 
@@ -214,7 +221,7 @@ async function parallelProcess() {
 
 ## 6. 결론
 
--   **Promise**는 비동기 작업의 상태와 결과를 관리하고, 콜백 지옥을 해결하는 강력한 패턴입니다.
--   **async/await**는 Promise를 기반으로, 비동기 코드를 동기 코드처럼 읽고 쓰기 쉽게 만들어 가독성을 극대화합니다.
+- **Promise**는 비동기 작업의 상태와 결과를 관리하고, 콜백 지옥을 해결하는 강력한 패턴입니다.
+- **async/await**는 Promise를 기반으로, 비동기 코드를 동기 코드처럼 읽고 쓰기 쉽게 만들어 가독성을 극대화합니다.
 
 현대 JavaScript 개발에서 이 두 가지 개념은 필수적이므로, 정확히 이해하고 활용하는 것이 중요합니다.
