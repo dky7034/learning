@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>클릭</button>
+    <input type="text" />
+    <script>
+      const buttonTag = document.querySelector("button");
+
+      // DOM의 textContent 속성을 활용
+      buttonTag["textContent"] = "클릭클릭";
+
+      // DOM의 이벤트 속성을 활용해서 이벤트 핸들러를 등록
+      buttonTag["onclick"] = () => {
+        alert("클릭 클릭 클릭");
+      };
+
+      const inputTag = document.querySelector("input");
+      inputTag.oninput = () => {
+        console.log("입력");
+      };
+    </script>
+  </body>
+</html>

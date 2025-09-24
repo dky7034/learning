@@ -1,14 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+  </head>
   <body>
-    <div id="container">
-      <h1>Hello, World!</h1>
-    </div>
+    <div id="parent"></div>
+    <button>버튼</button>
     <script>
-      const container = document.querySelector("#container");
-      const newH1 = document.createElement("h1");
-      newH1.textContent = "Hello, DOM!";
-      container.appendChild(newH1);
+      // API 사용을 위한 기본 URL
+      const DOMAIN_NAME = "https://dummyjson.com";
+
+      // 부모 태그 선택
+      const parentTag = document.querySelector("#parent");
+      // 데이터 받아오는 함수
+      // 상품 목록을 요청할 함수
+      async function getProducts() {
+        const config = { url: `${DOMAIN_NAME}/products`, method: "get" };
+        const response = await axios(config);
+        const data = response["data"];
+        const products = data["products"];
+
+        products.forEach((e) => {
+          // 매개변수 e: 배열에 저장된 개별 상품 객체
+          // 상품(e) 정보에서 상품 이름(title) 속성 추출
+          const title = e["title"];
+          // p 태그 요소 생성
+          const pTag = document.createElement("p");
+          // p 태그 요소의 텍스트를 상품의 이름으로 설정
+          pTag["textContent"] = title;
+          // #parent인 요소에 p 태그 추가(append())
+          parentTag.append(pTag);
+        });
+      }
+      // getProducts();
+
+      // 태그명이 button인 요소의 click 이벤트가 발생했을 때
+      // 함수 getProducts()가 호출되도록 하기
+      const buttonTag = document.querySelector("button");
+      buttonTag.addEventListener("click", () => {
+        getProducts();
+      });
     </script>
   </body>
 </html>

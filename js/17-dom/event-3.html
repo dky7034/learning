@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <button>클릭</button>
+      <input type="text" />
+      <p id="message"></p>
+      <a href="https://www.naver.com">네이버</a>
+    </div>
+    <script>
+      const inputTag = document.querySelector("input");
+      inputTag.addEventListener("input", (e) => {
+        // 매개변수 e: 이벤트 정보를 저장하는 객체
+        // console.log(e["target"]["value"]);
+
+        // input에 사용자가 입력한 값
+        const value = e["target"]["value"];
+
+        // p 태그 변수에 저장
+        const pTag = document.querySelector("#message");
+        // value의 길이가 8 미만이면, p 태그에 텍스트를 설정
+        // "글자가 8글자 미만입니다."
+        if (value["length"] < 8) {
+          pTag.textContent = "글자가 8글자 미만입니다.";
+          // value의 길이가 8 이상이면, p 태그에 텍스트를 설정
+          // 빈 문자열
+        } else if (value["length"] >= 8) {
+          pTag.textContent = "";
+        }
+      });
+      // a 태그를 선택하고, 변수 link에 할당
+      const aTag = document.querySelector("a");
+      // 변수 link에 addEventListener()를 사용해서
+      // // click 이벤트 핸들러 함수를 지정
+      aTag.addEventListener("click", (e) => {
+        e.preventDefault();
+      });
+    </script>
+  </body>
+</html>
