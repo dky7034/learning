@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- action 속성은 요청 주소를 의미함 -->
+    <!-- method 속성은 요청 목적(조회, 생성, 수정, 삭제)을 의미함 -->
+    <form action="https://dummyjson.com/products/add" method="post">
+      <!-- input 요소들이 요청의 본문(body) 역할을 함 -->
+      <!-- 본문은 객체, {key : value} / 예를 들면, 상품의 이름을 나타내는 속성 - {title : "상품 이름"} -->
+      <!-- 본문 데이터의 객체 key 역할을 input의 name 속성이 수행함 -->
+      <input type="text" name="title" />
+      <input type="text" name="category" />
+      <input type="submit" />
+    </form>
+  </body>
+</html>
