@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="#" id="form">
+      <!-- <input type="text" name="email" /> -->
+      <input type="password" name="password" />
+      <input type="password" name="password-confirm" />
+      <input type="submit" value="" />
+    </form>
+    <script>
+      const formTag = document.querySelector("#form");
+      formTag.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // form.elements 컬렉션을 사용하여 각 입력 요소의 값을 가져옵니다.
+        const passwordValue = formTag.elements["password"].value;
+        const passwordConfirmValue = formTag.elements["password-confirm"].value;
+
+        // 두 값이 일치하는지 확인합니다.
+        if (passwordValue === passwordConfirmValue) {
+          console.log("같습니다");
+          alert("비밀번호가 일치합니다.");
+        } else {
+          console.log("다릅니다");
+          alert("비밀번호가 일치하지 않습니다.");
+        }
+      });
+      formTag.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const fd = new FormData(formTag);
+        const pwd = fd.get("password");
+        const pwdConfirm = fd.get("password-confirm");
+        console.log(password === passwordConfirm)
+      });
+    </script>
+  </body>
+</html>
