@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="onClick()">리스트 추가하기</button>
+    <ul id="ul"></ul>
+    <script>
+      // 총 3000번 DOM 수정 - 성능 최악..
+      function onClick() {
+        const $ul = document.getElementById("ul");
+        for (let i = 0; i < 3000; i++) {
+          $ul.innerHTML += `<li>${i}</li>`;
+        }
+      }
+    </script>
+  </body>
+</html>

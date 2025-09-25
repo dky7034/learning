@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="parent">
+      <div id="child">
+        <button id="button">클릭</button>
+      </div>
+    </div>
+    <script>
+      const parent = document.querySelector("#parent");
+      const child = document.querySelector("#child");
+      const button = document.querySelector("#button");
+
+      parent.addEventListener(
+        "click",
+        () => {
+          console.log("첫 번째 div");
+        },
+        { capture: true }
+      );
+
+      child.addEventListener(
+        "click",
+        () => {
+          console.log("두 번째 div");
+        },
+        { capture: true }
+      );
+
+      button.addEventListener(
+        "click",
+        () => {
+          console.log("button");
+        },
+        { capture: true }
+      );
+    </script>
+  </body>
+</html>
