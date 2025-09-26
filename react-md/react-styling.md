@@ -30,6 +30,7 @@
 스타일을 적용할 컴포넌트와 동일한 위치에 `[컴포넌트명].module.css` 형식으로 CSS 파일을 생성합니다.
 
 **`src/App.module.css`**
+
 ```css
 /* App.module.css */
 .container {
@@ -49,6 +50,7 @@
 `import` 구문을 사용하여 CSS 모듈을 JavaScript 객체처럼 불러옵니다. 이 객체는 작성한 클래스 이름을 속성으로 가집니다.
 
 **`src/App.jsx`**
+
 ```jsx
 import React from "react";
 // CSS 모듈을 styles 객체로 불러옵니다.
@@ -125,6 +127,7 @@ export default defineConfig({
 이제 JSX의 `className` 속성에 원하는 유틸리티 클래스를 조합하여 스타일을 적용할 수 있습니다.
 
 **`src/App.jsx`**
+
 ```jsx
 import React from "react";
 
@@ -136,9 +139,7 @@ export default function App() {
         font-bold: font-weight: 700
         text-red-500: color: rgb(239 68 68)
       */}
-      <h1 className="text-3xl font-bold text-red-500">
-        Hello, Tailwind CSS!
-      </h1>
+      <h1 className="text-3xl font-bold text-red-500">Hello, Tailwind CSS!</h1>
     </div>
   );
 }
@@ -154,10 +155,10 @@ export default function App() {
 
 ## 3. CSS Modules vs. Tailwind CSS
 
-| 특징 | CSS Modules | Tailwind CSS |
-| :--- | :--- | :--- |
-| **스타일링 방식** | 별도 CSS 파일에 작성 | JSX `className`에 유틸리티 조합 |
-| **스코프** | 컴포넌트 단위 로컬 스코프 | 전역 유틸리티 클래스 |
-| **장점** | 클래스명 충돌 방지, CSS 문법 유지 | 빠른 개발, 디자인 일관성, 작은 빌드 크기 |
-| **단점** | JS와 CSS 파일 간의 잦은 전환 | `className`이 길고 복잡해질 수 있음 |
-| **추천 상황** | 컴포넌트별로 복잡하고 고유한 스타일이 필요할 때 | 프로토타이핑 및 일관된 디자인 시스템 기반의 빠른 개발이 중요할 때 |
+| 특징              | CSS Modules                                     | Tailwind CSS                                                      |
+| :---------------- | :---------------------------------------------- | :---------------------------------------------------------------- |
+| **스타일링 방식** | 별도 CSS 파일에 작성                            | JSX `className`에 유틸리티 조합                                   |
+| **스코프**        | 컴포넌트 단위 로컬 스코프                       | 전역 유틸리티 클래스                                              |
+| **장점**          | 클래스명 충돌 방지, CSS 문법 유지               | 빠른 개발, 디자인 일관성, 작은 빌드 크기                          |
+| **단점**          | JS와 CSS 파일 간의 잦은 전환                    | `className`이 길고 복잡해질 수 있음                               |
+| **추천 상황**     | 컴포넌트별로 복잡하고 고유한 스타일이 필요할 때 | 프로토타이핑 및 일관된 디자인 시스템 기반의 빠른 개발이 중요할 때 |
