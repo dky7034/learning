@@ -1,10 +1,10 @@
 import React from "react";
-import UserCardContainer from "./components/UserCard/UserCardContainer";
+import KeyPerformanceTest from "./components/KeyPerformanceTest";
 
 export default function App() {
   return (
     <div>
-      <UserCardContainer></UserCardContainer>
+      <KeyPerformanceTest />
     </div>
   );
 }
