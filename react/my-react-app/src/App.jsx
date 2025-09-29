@@ -1,12 +1,25 @@
 import React from "react";
-import OnClick from "./event-handling/Onclick";
-import OnChange from "./event-handling/OnChange";
-import OnSubmit from "./event-handling/OnSubmit";
+import Parent from "./components/props/Parent";
+import FormContainer from "./components/PropsFunction/FormContainer";
+import ProfileContainer from "./components/PropsExample/ProfileContainer";
+import CardContainer from "./components/PropsFunction/CardContainer";
 
 export default function App() {
   return (
     <div>
-      <OnClick></OnClick>
+      {/* <Parent></Parent> */}
+      <FormContainer></FormContainer>
+      <br />
+      <hr />
+      <br />
+      <ProfileContainer></ProfileContainer>
+      <br />
+      <hr />
+      <br />
+      <CardContainer></CardContainer>
+      <br />
+      <hr />
+      <br />
     </div>
   );
 }
