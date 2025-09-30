@@ -1,10 +1,10 @@
 import React from "react";
-import KeyPerformanceTest from "./components/KeyPerformanceTest";
+import Test from "./components/Test/Test";
 
 export default function App() {
   return (
     <div>
-      <KeyPerformanceTest />
+      <Test></Test>
     </div>
   );
 }

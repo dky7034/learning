@@ -3,11 +3,18 @@ import _ from "lodash";
 
 // 각 리스트 아이템에 대한 컴포넌트입니다.
 // 내부에 input을 두어 자신만의 상태를 가집니다.
+// memo()로 감싸서 props가 변경되지 않으면 리렌더링을 방지합니다.
+// 이렇게 하면 key 변경에 따른 React의 동작을 더 명확히 관찰할 수 있습니다.
 const StatefulItem = memo(({ item }) => {
   console.log(`Rendering Item: ${item.text}`);
   return (
     <li style={{ border: "1px solid #ccc", margin: "5px", padding: "5px" }}>
       <span>{item.text}</span>
+      {/*
+        이 input은 비제어 컴포넌트입니다 (value prop 없음).
+        따라서 input의 값은 DOM 자체에 저장됩니다.
+        React가 이 DOM 노드를 재사용하면 input 값도 그대로 유지됩니다.
+      */}
       <input
         type="text"
         placeholder="여기에 입력하여 상태를 확인하세요"
@@ -24,11 +31,14 @@ const initialItems = [
   { id: "d", text: "항목 D" },
 ];
 
-// key 없이 렌더링하는 컴포넌트
+// key 없이 렌더링하는 컴포넌트 (정확히는 index를 key로 사용)
 function WithoutKeys() {
   const [items, setItems] = useState(initialItems);
 
   const shuffle = () => {
+    // _.shuffle(items)는 원본 배열을 변경하지 않고 새로운 배열을 반환합니다.
+    // 새로운 배열이 생성되므로 참조가 바뀌어 React가 상태 변경을 감지하고 리렌더링합니다.
+    // 예: [A, B, C, D] → [C, A, D, B] (새 배열)
     setItems(_.shuffle(items));
   };
 
@@ -44,7 +54,20 @@ function WithoutKeys() {
       <p>각 항목의 input에 아무 값이나 입력한 후 '리스트 섞기'를 눌러보세요.</p>
       <ul>
         {items.map((item, index) => (
-          // key로 index를 사용하면, key가 없는 것과 동일하게 동작하여 문제가 발생합니다.
+          /*
+            key={index}를 사용하면 React는 "위치"만 보고 컴포넌트를 판단합니다.
+
+            예시:
+            초기: 0번-항목A(input: "AAA"), 1번-항목B(input: "BBB"), 2번-항목C(비어있음)
+            섞기 후: 0번-항목C, 1번-항목A, 2번-항목B
+
+            React의 판단:
+            - "0번 자리에 key=0이 있네? → 기존 컴포넌트 재사용, props만 변경"
+            - "텍스트만 '항목 A' → '항목 C'로 변경"
+            - input DOM은 그대로 재사용 → "AAA" 값이 그대로 남음
+
+            결과: 항목C 옆에 "AAA"가 표시되는 버그 발생!
+          */
           <StatefulItem key={index} item={item} />
         ))}
       </ul>
@@ -52,11 +75,12 @@ function WithoutKeys() {
   );
 }
 
-// key와 함께 렌더링하는 컴포넌트
+// key와 함께 렌더링하는 컴포넌트 (고유한 id를 key로 사용)
 function WithKeys() {
   const [items, setItems] = useState(initialItems);
 
   const shuffle = () => {
+    // 동일하게 새로운 배열을 반환하여 리렌더링을 트리거합니다.
     setItems(_.shuffle(items));
   };
 
@@ -72,6 +96,20 @@ function WithKeys() {
       <p>각 항목의 input에 아무 값이나 입력한 후 '리스트 섞기'를 눌러보세요.</p>
       <ul>
         {items.map((item) => (
+          /*
+            key={item.id}를 사용하면 React는 각 컴포넌트의 "정체성"을 추적합니다.
+
+            예시:
+            초기: key="a"-항목A(input: "AAA"), key="b"-항목B(input: "BBB"), key="c"-항목C(비어있음)
+            섞기 후: key="c"-항목C, key="a"-항목A, key="b"-항목B
+
+            React의 판단:
+            - "0번 자리에 key='c'가 왔네? → 'c' 컴포넌트를 찾아서 여기로 이동"
+            - "1번 자리에 key='a'가 왔네? → 'a' 컴포넌트를 찾아서 여기로 이동"
+            - 각 컴포넌트의 DOM과 상태를 모두 함께 이동
+
+            결과: 항목C는 비어있고, 항목A는 "AAA", 항목B는 "BBB"를 정확히 유지!
+          */
           <StatefulItem key={item.id} item={item} />
         ))}
       </ul>
