@@ -1,10 +1,10 @@
 import React from "react";
-import Test from "./components/Test/Test";
+import Container from "./components/UseEffect/Container";
 
 export default function App() {
   return (
     <div>
-      <Test></Test>
+      <Container></Container>
     </div>
   );
 }
