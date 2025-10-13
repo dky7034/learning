@@ -4,9 +4,12 @@
 import Home from "../pages/RootPages/Home";
 import About from "../pages/RootPages/About";
 import Profile from "../pages/RootPages/Profile";
+import PostList from "../pages/RootPages/PostList";
 import AuthHome from "../pages/AuthPages/AuthHome";
 import Signup from "../pages/AuthPages/Signup";
 import Login from "../pages/AuthPages/Login";
+import PostDetail from "../pages/RootPages/PostDetail";
+import NotFound from "../pages/NotFound";
 
 // React Router의 createBrowserRouter 불러오기
 import { createBrowserRouter } from "react-router-dom";
@@ -35,6 +38,10 @@ const router = createBrowserRouter([
         Component: About,
       },
       {
+        path: "posts", // '/posts' 경로 추가
+        Component: PostList,
+      },
+      {
         // path가 없는 레이아웃 라우트를 사용해 하위 경로들을 그룹화하고 보호합니다.
         Component: ProtectedLayout,
         children: [
@@ -44,6 +51,7 @@ const router = createBrowserRouter([
           },
         ],
       },
+      { path: "posts/:postId", Component: PostDetail },
     ],
   },
   // AuthLayout 경로 설정
@@ -56,6 +64,11 @@ const router = createBrowserRouter([
       { path: "login", Component: Login },
       { path: "signup", Component: Signup },
     ],
+  },
+  // Not Found 페이지: 일치하는 경로가 없을 때 렌더링됩니다.
+  {
+    path: "*",
+    Component: NotFound,
   },
 ]);
 

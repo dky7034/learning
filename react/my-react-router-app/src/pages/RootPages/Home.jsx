@@ -1,17 +1,13 @@
 import React from "react";
-// a 태그를 대체하는 Link 컴포넌트
-import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div>
-      <h1 className="font-bold text-4xl">홈페이지</h1>
-      {/* to 속성: 어떤 주소로 이동할 것인지? */}
-      <Link to="/">홈</Link>
-      <br />
-      <Link to="/about">소개</Link>
-      <br />
-      <Link to="/profile">프로필</Link>
+    <div className="bg-white p-8 rounded-lg shadow-md">
+      <h1 className="text-4xl font-bold text-gray-800 mb-4">홈페이지</h1>
+      <p className="text-gray-600">
+        이곳은 애플리케이션의 메인 페이지입니다. 위 내비게이션을 통해 다른
+        페이지로 이동할 수 있습니다.
+      </p>
     </div>
   );
 }

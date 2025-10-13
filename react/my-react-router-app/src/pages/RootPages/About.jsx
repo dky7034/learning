@@ -1,15 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function About() {
   return (
-    <div>
-      <h1 className="font-bold text-4xl">소개페이지</h1>
-      <Link to={"/"}>홈</Link>
-      <br />
-      <Link to="/about">소개</Link>
-      <br />
-      <Link to="/profile">프로필</Link>
+    <div className="bg-white p-8 rounded-lg shadow-md">
+      <h1 className="text-4xl font-bold text-gray-800 mb-4">소개</h1>
+      <p className="text-gray-600">
+        이 페이지는 애플리케이션을 소개하는 공간입니다.
+      </p>
     </div>
   );
 }

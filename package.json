@@ -20,5 +20,11 @@
   "homepage": "https://github.com/dky7034/learning#readme",
   "dependencies": {
     "axios": "^1.12.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.14",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.14"
   }
 }
