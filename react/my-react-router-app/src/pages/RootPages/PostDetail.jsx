@@ -12,7 +12,9 @@ export default function PostDetail() {
     const getPost = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`https://dummyjson.com/posts/${postId}`);
+        const response = await axios.get(
+          `https://dummyjson.com/posts/${postId}`
+        );
         setPost(response.data);
         setError(null);
       } catch (err) {
