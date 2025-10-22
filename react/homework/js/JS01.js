@@ -520,11 +520,22 @@ console.log(calculateCircleArea(10)); // 314.159
 // 매개변수: (객체) student
 // 반환값: 원본 객체에 총점(sum)과 평균(average) 속성과 값을 추가한 객체
 // 함수 작성 후 아래 주석 처리된 테스트 코드의 주석을 해제하고 실행하여 출력 결과를 비교한다
+function processScore(student) {
+  let total = 0;
+  const scores = student.score; // 점수 배열 꺼내기
 
-/*
+  for (let i = 0; i < scores.length; i++) {
+    total += scores[i];
+  }
+
+  student.sum = total;
+  student.avg = total / scores.length;
+
+  return student;
+}
+
 console.log(processScore({ name: "홍길동", score: [85, 90, 94, 50] })); // { name: '홍길동', score: [85, 90, 94, 50], sum: 319, average: 79.75 }
 console.log(processScore({ name: "김철수", score: [92, 88, 95, 80] })); // { name: '김철수', score: [92, 88, 95, 80], sum: 355, average: 88.75 }
-*/
 
 // 문제 [실습]
 // 아래 설명을 보고 함수를 구현한다.(함수 선언식으로 구현한다)
